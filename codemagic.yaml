@@ -1,0 +1,20 @@
+workflows:
+  ios-release:
+    name: iOS Release Build
+
+    environment:
+      flutter: stable
+
+    working_directory: Flutter
+
+    scripts:
+      - name: Install dependencies
+        script: |
+          flutter pub get
+
+      - name: Build IPA
+        script: |
+          flutter build ipa --release
+
+    artifacts:
+      - build/ios/ipa/*.ipa
